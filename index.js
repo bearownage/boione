@@ -7,6 +7,8 @@ const app = express()
 
 const imdb = require('imdb-api')
 
+var genres = genres[2];
+
 app.set('port', (process.env.PORT || 5000))
 
 // Process application/x-www-form-urlencoded
@@ -39,12 +41,14 @@ app.post('/webhook/', function(req, res)
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
+			//genres.push(text)
 			decideMessage(sender, text)
 			//sendText(sender, "Text echo: " + text.substring(0, 100))
 		}
 
 		if (event.postback) {
 			let text = JSON.stringify(event.postback)
+			//genres.push(text)
 			decideMessage(sender, text)
 			continue
 		}
@@ -57,20 +61,77 @@ function decideMessage(sender, text1)
 	let text = text1.toLowerCase()
 	if (text.includes("action")) 
 	{
-		//sendText(sender, "I like Action movies too")
-		sendMediaMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
-		//sendButtonMessage(sender, "What is your favorite genre?")
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		//sendMediaMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
+		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("romance"))
 	{
-		//sendText(sender, "I like Romance movies too")
-		sendGenericMessage(sender, "What is your favorite genre?")
-		//sendButtonMessage(sender, "What is your favorite genre?")
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		//sendGenericMessage(sender, "What is your favorite genre?")
+		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("comedy") )
 	{
-		sendText(sender, "I like Comedy movies too")
-		sendButtonMessage(sender, "What is your favorite genre?")
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("sci-fi") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("horror") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("thriller") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("drama") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("mystery") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("crime") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("animation") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("adventure") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
+	}
+	else if (text.includes("fantasy") )
+	{
+		genres.push(text1)
+		sendText(sender, "Select another genre")
+		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else 
 	{
@@ -108,6 +169,61 @@ function sendButtonMessage(sender, text)
           	"type": "postback",
           	"title": "Romance",
           	"payload": "romance"
+          },
+          {
+          	"type": "postback",
+          	"title": "Romance",
+          	"payload": "romance"
+          },
+          {
+          	"type": "postback",
+          	"title": "Sci-fi",
+          	"payload": "scifi"
+          },
+          {
+          	"type": "postback",
+          	"title": "Horror",
+          	"payload": "horror"
+          },
+          {
+          	"type": "postback",
+          	"title": "Thriller",
+          	"payload": "thriller"
+          },
+          {
+          	"type": "postback",
+          	"title": "Drama",
+          	"payload": "drama"
+          },
+          {
+          	"type": "postback",
+          	"title": "Romance",
+          	"payload": "romance"
+          },
+          {
+          	"type": "postback",
+          	"title": "Mystery",
+          	"payload": "mystery"
+          },
+          {
+          	"type": "postback",
+          	"title": "Crime",
+          	"payload": "crime"
+          },
+          {
+          	"type": "postback",
+          	"title": "Animation",
+          	"payload": "animation"
+          },
+          {
+          	"type": "postback",
+          	"title": "Adventure",
+          	"payload": "adventure"
+          },
+          {
+          	"type": "postback",
+          	"title": "Fantasy",
+          	"payload": "fantasy"
           }
         ]
       }
