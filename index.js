@@ -20,6 +20,9 @@ app.use(bodyParser.json())
 // Index route
 app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')
+	mdb.searchMovie({ query: 'Alien' }, (err, res) => {
+  	console.log(res);
+	});
 })
 
 // for Facebook verification
