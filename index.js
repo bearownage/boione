@@ -62,8 +62,8 @@ function decideMessage(sender, text1)
 	else if (text.includes("romance"))
 	{
 		sendText(sender, "I like Romance movies too")
-		sendButtonMessage(sender, "What is your favorite genre?")
 		sendGenericMessage(sender)
+		sendButtonMessage(sender, "What is your favorite genre?")
 	}
 	else if (text.includes("comedy") )
 	{
@@ -115,11 +115,11 @@ function sendButtonMessage(sender, text)
 function sendImageMessage(sender)
 {
 	let messageData = {
-    "attachment": {
+    "attachment":{
       "type": "template",
-      "payload": {
+      "payload":{
          "template_type": "media",
-         "elements": [
+         "elements":[
             {
                "media_type": "image",
                "url": "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg"
