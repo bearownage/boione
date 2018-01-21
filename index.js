@@ -17,15 +17,10 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
-
 // Index route
 app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')
 })
-
-mdb.searchMovie({ query: 'Alien' }, (err, res) => {
-  console.log(res);
-});
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
@@ -165,56 +160,6 @@ function sendButtonMessage(sender, text)
           	"type": "postback",
           	"title": "Romance",
           	"payload": "romance"
-          },
-          {
-          	"type": "postback",
-          	"title": "Sci-fi",
-          	"payload": "scifi"
-          },
-          {
-          	"type": "postback",
-          	"title": "Horror",
-          	"payload": "horror"
-          },
-          {
-          	"type": "postback",
-          	"title": "Thriller",
-          	"payload": "thriller"
-          },
-          {
-          	"type": "postback",
-          	"title": "Drama",
-          	"payload": "drama"
-          },
-          {
-          	"type": "postback",
-          	"title": "Romance",
-          	"payload": "romance"
-          },
-          {
-          	"type": "postback",
-          	"title": "Mystery",
-          	"payload": "mystery"
-          },
-          {
-          	"type": "postback",
-          	"title": "Crime",
-          	"payload": "crime"
-          },
-          {
-          	"type": "postback",
-          	"title": "Animation",
-          	"payload": "animation"
-          },
-          {
-          	"type": "postback",
-          	"title": "Adventure",
-          	"payload": "adventure"
-          },
-          {
-          	"type": "postback",
-          	"title": "Fantasy",
-          	"payload": "fantasy"
           }
         ]
       }
