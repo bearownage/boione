@@ -56,7 +56,7 @@ function decideMessage(sender, text1)
 	if (text.includes("action")) 
 	{
 		//sendText(sender, "I like Action movies too")
-		sendImageMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
+		sendMediaMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
 		//sendButtonMessage(sender, "What is your favorite genre?")
 	}
 	else if (text.includes("romance"))
@@ -112,16 +112,16 @@ function sendButtonMessage(sender, text)
 	sendRequest(sender, messageData)
 }
 
-function sendImageMessage(sender, imageURL)
+function sendMediaMessage(sender, imageURL)
 {
 	let messageData = {
     "attachment":{
       "type": "template",
       "payload":{
-         "template_type": "media",
+         "template_type":"media",
          "elements":[
             {
-               "media_type": "<image>",
+               "media_type": "image",
                "url": imageURL
             }
          ]
