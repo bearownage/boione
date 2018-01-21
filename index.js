@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 
 // Index route homepage
 app.get('/', function (req, res) {
-	res.send('Hello world, I am a chat bot')
+	res.send('If this shows, then the bot is running')
 })
 
 // for Facebook verification
@@ -58,19 +58,19 @@ app.post('/webhook/', function(req, res)
 function decideMessage(sender, text1)
 {
 	let text = text1.toLowerCase()
-	if (text.includes("Action")) 
+	if (text.includes("action")) 
   {
     sendText(sender, "I like Action movies too")
     //sendImageMessage(sender)
     sendButtonMessage(sender, "What is your favorite genre?")
   }
-  else if (text.includes("Romance"))
+  else if (text.includes("romance"))
   {
     sendText(sender, "I like Romance movies too")
     sendButtonMessage(sender, "What is your favorite genre?")
     sendGenericMessage(sender)
   }
-  else if (text.includes("Comedy") )
+  else if (text.includes("comedy") )
   {
     sendText(sender, "I like Comedy movies too")
     sendButtonMessage(sender, "What is your favorite genre?")
