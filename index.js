@@ -65,10 +65,14 @@ function decideMessage(sender, text1)
 		sendButtonMessage(sender, "What is your favorite genre?")
 		sendGenericMessage(sender)
 	}
-	else (text.includes("Comedy") )
+	else if (text.includes("Comedy") )
 	{
 		sendText(sender, "I like Comedy movies too")
 		sendButtonMessage(sender, "What is your favorite genre?")
+	}
+	else 
+	{
+		senderText(sender, "That is not a genre, please list a genre")
 	}
 }
 
