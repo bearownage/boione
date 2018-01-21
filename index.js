@@ -32,7 +32,7 @@ let token = "EAACl0MiDsHABADi58IVzbUkRIaB6aEcixXv2uViGOEOw1QR8egx2EuprsPIe0ifWCu
 
 app.post('/webhook/', function(req, res) 
 {
-	sendText(sender, "What type of Movie would you like to watch, Action, Comedy, or Romance?")
+	sendText(event.sender.id, "What type of Movie would you like to watch, Action, Comedy, or Romance?")
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
