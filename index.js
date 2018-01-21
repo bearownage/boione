@@ -29,7 +29,7 @@ app.get('/webhook/', function (req, res) {
 let token = "EAACl0MiDsHABAM1W2ZBLH63v91sZBc0L0LSCoZAbYdYnSSTlGgMPovVdlJVHMZBfqEIXmDHA9CirmQjR2cSpwjoGy2McZBNoeqm1AfRJyCKWnvZATLU1mQgUsTBZCnqG7zJFIH5Q6oc7S0hESnEvNRZCNFlZCQ6Qp6QmveLQf3qq8JKvtSQEZAZAylZB" 
 
 app.get('/webhook/', function(req, res) {
-	if (req.query['hub.verify_token'] === "my_voice_is_my_password_verify_me") {
+	if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
 		res.send(req.query['hub.challenge'])
 	}
 	res.send("Wrong token")
