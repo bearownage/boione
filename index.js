@@ -156,11 +156,6 @@ function sendButtonMessage(sender, text)
           	"title": "Romance",
           	"payload": "romance"
           },
-          {
-          	"type": "postback",
-          	"title": "Romance",
-          	"payload": "romance"
-          }
         ]
       }
     }
