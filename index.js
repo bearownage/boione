@@ -26,14 +26,7 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
-let token = "EAACl0MiDsHABAM1W2ZBLH63v91sZBc0L0LSCoZAbYdYnSSTlGgMPovVdlJVHMZBfqEIXmDHA9CirmQjR2cSpwjoGy2McZBNoeqm1AfRJyCKWnvZATLU1mQgUsTBZCnqG7zJFIH5Q6oc7S0hESnEvNRZCNFlZCQ6Qp6QmveLQf3qq8JKvtSQEZAZAylZB" 
-
-app.get('/webhook/', function(req, res) {
-	if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
-		res.send(req.query['hub.challenge'])
-	}
-	res.send("Wrong token")
-})
+let token = "EAACl0MiDsHABADi58IVzbUkRIaB6aEcixXv2uViGOEOw1QR8egx2EuprsPIe0ifWCue9j9coHFRDj32Rc1X0uM5THGuv5fo5A55nSqeerX5HnHcux7dQnBKCXYkHnpk7iEt6ZAlmR215RFhEK3gZCwaPtNYe5L0Jlmec5VjeLZBnK8psKg8"
 
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -47,6 +40,25 @@ app.post('/webhook/', function(req, res) {
 	}
 	res.sendStatus(200)
 })
+
+function sendText(sender, text) {
+	let messageData = {text: text}
+	request({
+		url: "https://graph.facebook.com/v2.6/me/messages",
+		qs : {access_token: token},
+		method: "POST",
+		json: {
+			recipient: {id: sender},
+			message : messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log("sending error")
+		} else if (response.body.error) {
+			console.log("response body error")
+		}
+	})
+}
 
 // Spin up the server
 app.listen(app.get('port'), function() {
