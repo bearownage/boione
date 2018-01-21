@@ -26,7 +26,7 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
-token = 
+let token = "EAACl0MiDsHABAM1W2ZBLH63v91sZBc0L0LSCoZAbYdYnSSTlGgMPovVdlJVHMZBfqEIXmDHA9CirmQjR2cSpwjoGy2McZBNoeqm1AfRJyCKWnvZATLU1mQgUsTBZCnqG7zJFIH5Q6oc7S0hESnEvNRZCNFlZCQ6Qp6QmveLQf3qq8JKvtSQEZAZAylZB" 
 
 app.get('/webhook/', function(req, res) {
 	if (req.query['hub.verify_token'] === "blondiebytes") {
