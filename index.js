@@ -30,6 +30,23 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
+describe('moviedb', function() {
+
+	this.timeout(10000);
+
+	// basic movie search
+	it('should search for Zoolander', function(done) {
+		api.searchMovie({query: 'Zoolander' }, function(err, res){
+			if (err) done(err);
+			// console.log(res);
+			res.should.be.an('object');
+			res.should.have.property('results');
+			res.results.should.be.an('array');
+			done();
+		});
+	});
+});
+
 let token = "EAACl0MiDsHABADi58IVzbUkRIaB6aEcixXv2uViGOEOw1QR8egx2EuprsPIe0ifWCue9j9coHFRDj32Rc1X0uM5THGuv5fo5A55nSqeerX5HnHcux7dQnBKCXYkHnpk7iEt6ZAlmR215RFhEK3gZCwaPtNYe5L0Jlmec5VjeLZBnK8psKg8"
 
 app.post('/webhook/', function(req, res) 
