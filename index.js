@@ -55,15 +55,15 @@ function decideMessage(sender, text1)
 	let text = text1.toLowerCase()
 	if (text.includes("action")) 
 	{
-		sendText(sender, "I like Action movies too")
+		//sendText(sender, "I like Action movies too")
 		sendImageMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
-		sendButtonMessage(sender, "What is your favorite genre?")
+		//sendButtonMessage(sender, "What is your favorite genre?")
 	}
 	else if (text.includes("romance"))
 	{
-		sendText(sender, "I like Romance movies too")
-		sendGenericMessage(sender)
-		sendButtonMessage(sender, "What is your favorite genre?")
+		//sendText(sender, "I like Romance movies too")
+		sendGenericMessage(sender, "What is your favorite genre?")
+		//sendButtonMessage(sender, "What is your favorite genre?")
 	}
 	else if (text.includes("comedy") )
 	{
@@ -131,7 +131,7 @@ function sendImageMessage(sender, imageURL)
   sendRequest(sender, messageData)
 }
 
-function sendGenericMessage(sender)
+function sendGenericMessage(sender, text)
 {
 	let messageData = {
     "attachment":{
@@ -145,10 +145,10 @@ function sendGenericMessage(sender)
             "subtitle":"I love romance",
             "default_action": {
               "type": "web_url",
-              "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
-              "messenger_extensions": true,
-              "webview_height_ratio": "tall",
-              "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+              "url": "http://www.imdb.com/search/title?&genres=romance&explore=title_type,genres",
+              //"messenger_extensions": true,
+              //"webview_height_ratio": "tall",
+              //"fallback_url": "https://peterssendreceiveapp.ngrok.io/"
             },
             "buttons":[
               {
