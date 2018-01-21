@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
-// Index route
+// Index route homepage
 app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')
 })
@@ -30,22 +30,6 @@ app.get('/webhook/', function (req, res) {
 	res.send('Error, wrong token')
 })
 
-describe('moviedb', function() {
-
-	this.timeout(10000);
-
-	// basic movie search
-	it('should search for Zoolander', function(done) {
-		api.searchMovie({query: 'Zoolander' }, function(err, res){
-			if (err) done(err);
-			// console.log(res);
-			res.should.be.an('object');
-			res.should.have.property('results');
-			res.results.should.be.an('array');
-			done();
-		});
-	});
-});
 
 let token = "EAACl0MiDsHABADi58IVzbUkRIaB6aEcixXv2uViGOEOw1QR8egx2EuprsPIe0ifWCue9j9coHFRDj32Rc1X0uM5THGuv5fo5A55nSqeerX5HnHcux7dQnBKCXYkHnpk7iEt6ZAlmR215RFhEK3gZCwaPtNYe5L0Jlmec5VjeLZBnK8psKg8"
 
@@ -74,72 +58,27 @@ app.post('/webhook/', function(req, res)
 function decideMessage(sender, text1)
 {
 	let text = text1.toLowerCase()
-	if (text.includes("action")) 
-	{
-		sendText(sender, "Select another genre")
-		//sendMediaMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("romance"))
-	{
-		sendText(sender, "Select another genre")
-		//sendGenericMessage(sender, "What is your favorite genre?")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("comedy") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("sci-fi") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("horror") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("thriller") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("drama") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("mystery") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("crime") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("animation") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("adventure") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else if (text.includes("fantasy") )
-	{
-		sendText(sender, "Select another genre")
-		sendButtonMessage(sender, "Here is a list of genres")
-	}
-	else 
-	{
-		sendText(sender, "That is not a genre, please list a genre")
-	}
+	if (text.includes("Action")) 
+  {
+    sendText(sender, "I like Action movies too")
+    //sendImageMessage(sender)
+    sendButtonMessage(sender, "What is your favorite genre?")
+  }
+  else if (text.includes("Romance"))
+  {
+    sendText(sender, "I like Romance movies too")
+    sendButtonMessage(sender, "What is your favorite genre?")
+    sendGenericMessage(sender)
+  }
+  else if (text.includes("Comedy") )
+  {
+    sendText(sender, "I like Comedy movies too")
+    sendButtonMessage(sender, "What is your favorite genre?")
+  }
+  else 
+  {
+    senderText(sender, "That is not a genre, please list a genre")
+  }
 }
 
 function sendText(sender, text) {
