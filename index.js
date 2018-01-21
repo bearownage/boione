@@ -1,11 +1,12 @@
 'use strict'
 
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-const imdb = require('imdb-api')
+const mdb = require('moviedb')('98325a9d3ed3ec225e41ccc4d360c817')
 
 //var genres = genres[2];
 
@@ -20,6 +21,9 @@ app.use(bodyParser.json())
 // Index route
 app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')
+	mdb.searchMovie({ query: 'Alien' }, (err, res) => {
+  	console.log(res);
+   });
 })
 
 // for Facebook verification
@@ -308,3 +312,7 @@ function sendRequest(sender, messageData)
 app.listen(app.get('port'), function() {
 	console.log('running on port', app.get('port'))
 })
+
+
+<script src="js/axios.min.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
