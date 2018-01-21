@@ -7,7 +7,7 @@ const app = express()
 
 const imdb = require('imdb-api')
 
-var genres = genres[2];
+//var genres = genres[2];
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -61,75 +61,75 @@ function decideMessage(sender, text1)
 	let text = text1.toLowerCase()
 	if (text.includes("action")) 
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		//sendMediaMessage(sender, "https://cdn3.whatculture.com/images/2015/02/Last-Action-Hero-600x400.jpg")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("romance"))
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		//sendGenericMessage(sender, "What is your favorite genre?")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("comedy") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("sci-fi") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("horror") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("thriller") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("drama") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("mystery") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("crime") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("animation") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("adventure") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
 	else if (text.includes("fantasy") )
 	{
-		genres.push(text1)
+		//genres.push(text1)
 		sendText(sender, "Select another genre")
 		sendButtonMessage(sender, "Here is a list of genres")
 	}
