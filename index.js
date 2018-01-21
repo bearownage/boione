@@ -121,7 +121,7 @@ function sendImageMessage(sender, imageURL)
          "template_type": "media",
          "elements":[
             {
-               "media_type": "image",
+               "media_type": "<image>",
                "url": imageURL
             }
          ]
