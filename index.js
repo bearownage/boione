@@ -1,11 +1,12 @@
 'use strict'
 
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
 const app = express()
 
-const mdb = require('moviedb')('98325a9d3ed3ec225e41ccc4d360c817');
+//const mdb = require('moviedb')('98325a9d3ed3ec225e41ccc4d360c817');
 
 //var genres = genres[2];
 
