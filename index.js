@@ -30,7 +30,9 @@ app.get('/webhook/', function (req, res) {
 
 let token = "EAACl0MiDsHABADi58IVzbUkRIaB6aEcixXv2uViGOEOw1QR8egx2EuprsPIe0ifWCue9j9coHFRDj32Rc1X0uM5THGuv5fo5A55nSqeerX5HnHcux7dQnBKCXYkHnpk7iEt6ZAlmR215RFhEK3gZCwaPtNYe5L0Jlmec5VjeLZBnK8psKg8"
 
-app.post('/webhook/', function(req, res) {
+app.post('/webhook/', function(req, res) 
+{
+	send(sender, "What type of Movie would you like to watch, Action, Comedy, or Romance?")
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
 		let event = messaging_events[i]
@@ -81,6 +83,8 @@ function sendText(sender, text) {
 	sendRequest(sender, messageData)
 }
 
+
+
 function sendButtonMessage(sender, text)
 {
 	let messageData ={
@@ -129,7 +133,7 @@ function sendMediaMessage(sender, imageURL)
     }    
   }
   sendRequest(sender, messageData)
-}
+}	
 
 function sendGenericMessage(sender, text)
 {
