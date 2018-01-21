@@ -72,7 +72,7 @@ function decideMessage(sender, text1)
 	}
 	else 
 	{
-		senderText(sender, "That is not a genre, please list a genre")
+		sendText(sender, "That is not a genre, please list a genre")
 	}
 }
 
