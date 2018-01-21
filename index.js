@@ -17,13 +17,15 @@ app.use(bodyParser.urlencoded({extended: false}))
 // Process application/json
 app.use(bodyParser.json())
 
+
 // Index route
 app.get('/', function (req, res) {
 	res.send('Hello world, I am a chat bot')
-	res.send(mdb.searchMovie({ query: 'Alien' }, (err, res) => {
-  	console.log(res);
-	});)
 })
+
+mdb.searchMovie({ query: 'Alien' }, (err, res) => {
+  console.log(res);
+});
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
