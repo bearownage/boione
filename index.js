@@ -77,6 +77,10 @@ function decideMessage(sender, text1)
     //sendButtonMessage(sender, "What is your favorite genre?")
     sendGenericMessage(sender, text)
   }
+  else if ( text.includes("band"))
+  {
+    sendText(sender, "I hate 🅱and")
+  }
   else 
   {
     sendText(sender, "That is not a genre, please list a genre, I still have the perfect movie for you tho")
