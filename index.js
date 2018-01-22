@@ -93,7 +93,7 @@ function sendText(sender, text) {
   sendRequest(sender, messageData)
 }
 
-function quickReply(sender, text) {
+//function quickReply(sender, text) {
   [
      let messageData = {
       "sender": {
