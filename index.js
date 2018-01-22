@@ -93,6 +93,29 @@ function sendText(sender, text) {
   sendRequest(sender, messageData)
 }
 
+function quickReply(sender, text) {
+  [
+     let messageData = {
+      "sender": {
+        "id": sender
+          },
+          "recipient": {
+            "id": "803276983208718"
+          },
+          "timestamp": 1502905976377,
+          "message": {
+            "quick_reply": {
+              "payload": "Please name a genre"
+            },
+            "mid": "mid.$cAAJsujCd2ORkHXKOOVd7C1F97Zto",
+            "seq": 9767,
+            "text": "Please name a genre"
+          }
+        }
+      ]
+      sendRequest(sender, messageData)
+    }
+
 
 
 function sendButtonMessage(sender, text)
