@@ -60,20 +60,20 @@ function decideMessage(sender, text1)
   let text = text1.toLowerCase()
   if (text.includes("action")) 
   {
-    sendText(sender, "I like Action movies too")
+    sendText(sender, "I like Action movies too and the emoji is super intenese :D")
     //sendImageMessage(sender)
     //sendButtonMessage(sender, "What is your favorite genre?")
     sendGenericMessage(sender, text)
   }
   else if (text.includes("romance"))
   {
-    sendText(sender, "I like Romance movies too")
+    sendText(sender, "I like Romance movies too, and the emoji movie is the best romace movie ;)")
     //sendButtonMessage(sender, "What is your favorite genre?")
     sendGenericMessage(sender, text)
   }
   else if (text.includes("comedy") )
   {
-    sendText(sender, "I like Comedy movies too")
+    sendText(sender, "I like Comedy movies too and I know the perfect comedy movie for you!")
     //sendButtonMessage(sender, "What is your favorite genre?")
     sendGenericMessage(sender, text)
   }
