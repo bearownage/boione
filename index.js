@@ -19,15 +19,15 @@ app.use(bodyParser.json())
 
 // Index route homepage
 app.get('/', function (req, res) {
-	res.send('If this shows, then the bot is running')
+  res.send('If this shows, then the bot is running')
 })
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-	if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
-		res.send(req.query['hub.challenge'])
-	}
-	res.send('Error, wrong token')
+  if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+    res.send(req.query['hub.challenge'])
+  }
+  res.send('Error, wrong token')
 })
 
 
@@ -35,63 +35,66 @@ let token = "EAACl0MiDsHABADi58IVzbUkRIaB6aEcixXv2uViGOEOw1QR8egx2EuprsPIe0ifWCu
 
 app.post('/webhook/', function(req, res) 
 {
-	//sendText(event.sender.id, "What type of Movie would you like to watch, Action, Comedy, or Romance?")
-	let messaging_events = req.body.entry[0].messaging
-	for (let i = 0; i < messaging_events.length; i++) {
-		let event = messaging_events[i]
-		let sender = event.sender.id
-		if (event.message && event.message.text) {
-			let text = event.message.text
-			decideMessage(sender, text)
-			//sendText(sender, "Text echo: " + text.substring(0, 100))
-		}
+  //sendText(event.sender.id, "What type of Movie would you like to watch, Action, Comedy, or Romance?")
+  let messaging_events = req.body.entry[0].messaging
+  for (let i = 0; i < messaging_events.length; i++) {
+    let event = messaging_events[i]
+    let sender = event.sender.id
+    if (event.message && event.message.text) {
+      let text = event.message.text
+      decideMessage(sender, text)
+      //sendText(sender, "Text echo: " + text.substring(0, 100))
+    }
 
-		if (event.postback) {
-			let text = JSON.stringify(event.postback)
-			decideMessage(sender, text)
-			continue
-		}
-	}
-	res.sendStatus(200)
+    if (event.postback) {
+      let text = JSON.stringify(event.postback)
+      decideMessage(sender, text)
+      continue
+    }
+  }
+  res.sendStatus(200)
 })
 
 function decideMessage(sender, text1)
 {
-	let text = text1.toLowerCase()
-	if (text.includes("action")) 
+  let text = text1.toLowerCase()
+  if (text.includes("action")) 
   {
     sendText(sender, "I like Action movies too")
     //sendImageMessage(sender)
-    sendButtonMessage(sender, "What is your favorite genre?")
+    //sendButtonMessage(sender, "What is your favorite genre?")
+    sendGenericMessage(sender, text)
   }
   else if (text.includes("romance"))
   {
     sendText(sender, "I like Romance movies too")
-    sendButtonMessage(sender, "What is your favorite genre?")
+    //sendButtonMessage(sender, "What is your favorite genre?")
     sendGenericMessage(sender, text)
   }
   else if (text.includes("comedy") )
   {
     sendText(sender, "I like Comedy movies too")
-    sendButtonMessage(sender, "What is your favorite genre?")
+    //sendButtonMessage(sender, "What is your favorite genre?")
+    sendGenericMessage(sender, text)
   }
   else 
   {
-    sendText(sender, "That is not a genre, please list a genre")
+    sendText(sender, "That is not a genre, please list a genre, I still have the perfect movie for you tho")
+    sendGenericMessage(sender, text)
   }
 }
 
 function sendText(sender, text) {
-	let messageData = {text: text}
-	sendRequest(sender, messageData)
+  let messageData = {text: text}
+  sendRequest(sender, messageData)
 }
 
 
 
 function sendButtonMessage(sender, text)
 {
-	let messageData ={
-	  "attachment":{
+  let messageData ={
+    "attachment":{
       "type":"template",
       "payload":{
         "template_type":"button",
@@ -108,20 +111,20 @@ function sendButtonMessage(sender, text)
             "payload": "action"
           },
           {
-          	"type": "postback",
-          	"title": "Romance",
-          	"payload": "romance"
+            "type": "postback",
+            "title": "Romance",
+            "payload": "romance"
           },
         ]
       }
     }
-	}
-	sendRequest(sender, messageData)
+  }
+  sendRequest(sender, messageData)
 }
 
 function sendMediaMessage(sender, imageURL)
 {
-	let messageData = {
+  let messageData = {
     "attachment":{
       "type": "template",
       "payload":{
@@ -136,23 +139,23 @@ function sendMediaMessage(sender, imageURL)
     }    
   }
   sendRequest(sender, messageData)
-}	
+} 
 
 function sendGenericMessage(sender, text)
 {
-	let messageData = {
+  let messageData = {
     "attachment":{
       "type":"template",
       "payload":{
         "template_type":"generic",
         "elements":[
            {
-            "title":"I love Romance",
-            "image_url":"http://moviejoy.net/Romancemovies.jpg",
+            "title":"The emoji movie is the best movie",
+            "image_url":"https://images.redbox.com/Images/EPC/boxartvertical/200334.jpg",
             "subtitle":"I love romance",
             "default_action": {
               "type": "web_url",
-              "url": "http://www.imdb.com/search/title?&genres=romance&explore=title_type,genres",
+              "url": "https://www.themoviedb.org/movie/378236-the-emoji-movie",
               //"messenger_extensions": true,
               //"webview_height_ratio": "tall",
               //"fallback_url": "https://peterssendreceiveapp.ngrok.io/"
@@ -174,24 +177,24 @@ function sendGenericMessage(sender, text)
 
 function sendRequest(sender, messageData)
 {
-	request({
-		url: "https://graph.facebook.com/v2.6/me/messages",
-		qs : {access_token: token},
-		method: "POST",
-		json: {
-			recipient: {id: sender},
-			message : messageData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-			console.log("sending error")
-		} else if (response.body.error) {
-			console.log("response body error")
-		}
-	})
+  request({
+    url: "https://graph.facebook.com/v2.6/me/messages",
+    qs : {access_token: token},
+    method: "POST",
+    json: {
+      recipient: {id: sender},
+      message : messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log("sending error")
+    } else if (response.body.error) {
+      console.log("response body error")
+    }
+  })
 }
 
 // Spin up the server
 app.listen(app.get('port'), function() {
-	console.log('running on port', app.get('port'))
+  console.log('running on port', app.get('port'))
 })
